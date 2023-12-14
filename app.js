@@ -1,5 +1,6 @@
 const express = require("express");
 const { connectToMongoDB } = require("./db");
+const BookRoute = require("./routes/book");
 require("dotenv").config();
 
 
@@ -11,6 +12,8 @@ const app = express();
 connectToMongoDB();
 
 app.use(express.json());
+
+app.use("/books", BookRoute);
 
 app.get("/", (req, res) => {
     res.send("Welcome Home!");
