@@ -15,6 +15,7 @@ const BookModelSchema = new Schema({
   isbn: {
     type: String,
     required: true,
+    unique: [true, "ISBN must be unique!"],
   },
   createdAt: {
     type: Date,
@@ -23,7 +24,7 @@ const BookModelSchema = new Schema({
   lastUpdatedAt: {
     type: Date,
     default: Date.now,
-  }
+  },
 });
 
-module.exports = mongoose.Model("books", BookModelSchema);
+module.exports = mongoose.model("books", BookModelSchema);
